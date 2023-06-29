@@ -23,9 +23,8 @@ public class NameAge {
 
     /**
      * Метод запрашивает ввод из консоли.
-     * Параметр text выводит строку перед вводом.
-     * @param text
-     * @return
+     * @param text выводит строку перед вводом
+     * @return Возращает введенные данные из консоли
      */
     public static String setData(String text) {
         Scanner scanner = new Scanner(System.in);

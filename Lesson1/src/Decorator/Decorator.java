@@ -6,11 +6,9 @@ package Decorator;
 public class Decorator {
 
     /**
-     * Возвращяет строку "Your name: + name + Your age: + age"
-     * на основе входящих данных.
      * @param name Имя
      * @param age Возраст
-     * @return
+     * @return Возвращяет строку "Your name: " + name + "Your age: " + age"
      */
 
     public static String decorate(String name, int age){
