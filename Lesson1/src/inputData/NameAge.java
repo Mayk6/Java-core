@@ -1,14 +1,16 @@
-package Input;
+package inputData;
 
-import Decorator.Decorator;
-
+import decorator.*;
 import java.util.Scanner;
 
+/**
+ * Class for requesting name and age
+ */
 public class NameAge {
 
     /**
-     * Запрашивает имя и возраст пользователя и
-     * выводит строку с его именем и возрастом в консоль.
+     * Requests the user's name and age and
+     * prints a string with his name and age to the console.
      */
     public static void getInfo(){
         String name = setData("Enter your name: ");
@@ -21,10 +23,11 @@ public class NameAge {
         System.out.println(Decorator.decorate(name, age));
     }
 
+
     /**
-     * Метод запрашивает ввод из консоли.
-     * @param text выводит строку перед вводом
-     * @return Возращает введенные данные из консоли
+     * The method asks for input from the console.
+     * @param text outputs a string before input
+     * @return Returns input from the console
      */
     public static String setData(String text) {
         Scanner scanner = new Scanner(System.in);
