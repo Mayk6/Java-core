@@ -2,6 +2,7 @@ import Enums.ProdCategories;
 import Exceptions.IllegalAmountException;
 import Exceptions.NoBuyerFoundException;
 import Exceptions.NoItemFoundException;
+import Exceptions.TooMuchSaleException;
 
 import java.util.ArrayList;
 
@@ -25,7 +26,14 @@ public class Main {
             order1.addItemInOrder(new Item("Biscod", 400, ProdCategories.VEGETABLES), 3);
 
             shop.deal("Ilia", "Banana", 1);
-            System.out.println(order1.getDiscountPrice(ProdCategories.VEGETABLES, ProdCategories.HOUSEHOLD_GOODS, ProdCategories.FRUITS));
+            try {
+                order1.calculateDiscountPrice(ProdCategories.VEGETABLES, ProdCategories.HOUSEHOLD_GOODS, ProdCategories.FRUITS);
+                System.out.println(order1.getDiscountPrice());
+            } catch (TooMuchSaleException e){
+                System.out.println(e.getMessage());
+                System.out.println(order1.getDiscountPrice());
+            }
+
             System.out.println(order1.getTotalPrice());
             shop.deal("Sabina", "Toothpaste", 1);
         } catch (NoBuyerFoundException e) {

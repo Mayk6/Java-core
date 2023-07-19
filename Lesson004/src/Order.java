@@ -1,5 +1,6 @@
 import Enums.Discounts;
 import Enums.ProdCategories;
+import Exceptions.TooMuchSaleException;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -21,14 +22,18 @@ public class Order {
     private double totalPrice;
     private double discountPrice;
 
-    public double getDiscountPrice(ProdCategories... categories) {
+    public double getDiscountPrice() {
+        return discountPrice;
+    }
+
+    public void calculateDiscountPrice(ProdCategories... categories) throws TooMuchSaleException {
         Random random = new Random();
         int rand = random.nextInt(0, Discounts.values().length);
         Discounts discount = Discounts.values()[rand];
 
         if (categories.length * discount.getCount() > 50) {
-            System.out.println("Сумма скидок не может привышать 50 процентов, применена скидка 20% на весь чек");
-            return getTotalPrice() - (getTotalPrice() / 100 * 20);
+            discountPrice = getTotalPrice() - (getTotalPrice() / 100 * 20);
+            throw new TooMuchSaleException("Сумма скидок не может быть более 50% применена скидка в 20% на весь заказ");
         }
 
         for (Item item : items.keySet()
@@ -40,7 +45,6 @@ public class Order {
                 discountPrice += item.getPrice() * items.get(item);
             }
         }
-        return discountPrice;
     }
 
 
@@ -73,10 +77,12 @@ public class Order {
     }
 
     public double getTotalPrice() {
+        double totalPrice = 0;
         for (Item item : items.keySet()
         ) {
             totalPrice += item.getPrice() * items.get(item);
         }
+        this.totalPrice = totalPrice;
         return totalPrice;
     }
 
