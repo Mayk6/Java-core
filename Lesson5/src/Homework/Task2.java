@@ -25,13 +25,13 @@ public class Task2 {
             throw new IllegalArgumentException("The array must have 9 elements.");
         }
 
-        int serializedField = 0;
+        int serializedMap = 0;
         for (int i = 0; i < field.length; i++) {
             if (field[i] < 0 || field[i] > 3) {
                 throw new IllegalArgumentException("Each element must be between 0 and 3.");
             }
-            serializedField |= (field[i] << (i * 2));
+            serializedMap |= (field[i] << (i * 2));
         }
-        return serializedField;
+        return serializedMap;
     }
 }
