@@ -10,7 +10,7 @@ public class Task2 {
 
         byte[] map = {2, 2, 3, 0, 1, 0, 1, 2, 3};
 
-        int serializedField = serializeMap(map);
+        int serializedMap = serializeMap(map);
         try (DataOutputStream outputStream = new DataOutputStream(new FileOutputStream("map.dat"))) {
             outputStream.writeInt(serializedField);
             System.out.println("Write done.");
