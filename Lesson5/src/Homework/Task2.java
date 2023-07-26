@@ -12,7 +12,7 @@ public class Task2 {
 
         int serializedMap = serializeMap(map);
         try (DataOutputStream outputStream = new DataOutputStream(new FileOutputStream("map.dat"))) {
-            outputStream.writeInt(serializedField);
+            outputStream.writeInt(serializedMap);
             System.out.println("Write done.");
         } catch (IOException e) {
             System.out.println("Write error.");
